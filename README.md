@@ -33,7 +33,12 @@ docker push hongwenjun/nginx-php
 ```
 
 ### 启动 nginx-php-fpm7.3 容器
+- 需要先建立映射目录，如果错误，需建立目录重启容器
 ```
+# 建立映射目录
+mkdir -p  /var/www/html
+mkdir -p  /var/log/nginx
+
 docker run -d -p 80:80 -p 443:443  \
     --cpus 0.8   --restart=always   \
     -v /var/www/html:/var/www/html   \
