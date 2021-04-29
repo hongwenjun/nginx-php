@@ -1,7 +1,20 @@
 ## 配置 Docker 容器  nginx-php-fpm7.3 镜像
 
-#  目前还不能让容器运行不退出，在找原因
 
+      docker run -d -p 80:80 --name  nginx-php   nginx-php
+
+#  php-fpm7.3 目前只能进入容器 手工开启
+
+ ```
+ docker exec -it nginx-php bash
+ 
+ php-fpm7.3 -D
+ ```
+
+###  CMD 容器启动 nginx 命令
+正确的做法是直接执行 nginx 可执行文件，并且要求以前台形式运行。比如：
+
+      CMD ["nginx", "-g", "daemon off;"]
 
 ##  Dockerfile
 ```
@@ -12,23 +25,11 @@ RUN   apt update -y && apt install -y  nginx php-fpm && \
       mkdir -p  /var/run/php  /run/php
 
 COPY ./default   /etc/nginx/sites-enabled/default
-COPY ./entrypoint.sh   ./entrypoint.sh
 
 VOLUME [/var/www/html  /etc/nginx/sites-enabled]
 EXPOSE 80/tcp  443/tcp
 
-ENTRYPOINT ["./entrypoint.sh"]
-
-```
-
-##  entrypoint.sh
-```
-#!/bin/sh
-#########################################################################
-# START
-
-php-fpm7.3  -D
-nginx
+CMD ["nginx", "-g", "daemon off;"]
 
 ```
 
