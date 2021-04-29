@@ -1,3 +1,4 @@
+![](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nginx-banner.png)
 ## 基于官方 debian 配置 Docker 容器  nginx-php-fpm7.3 镜像
 
 ```
@@ -100,3 +101,40 @@ server {
 }
 ```
 
+##  推荐 [linuxserver/nginx](https://hub.docker.com/r/linuxserver/nginx) 也支持php和更多插件
+
+### docker-compose (recommended)
+
+```  
+---
+version: "2.1"
+services:
+  nginx:
+    image: ghcr.io/linuxserver/nginx
+    container_name: nginx
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - </path/to/appdata/config>:/config
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+
+```
+
+### docker cli
+```
+docker run -d \
+  --name=nginx \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Europe/London \
+  -p 80:80 \
+  -p 443:443 \
+  -v </path/to/appdata/config>:/config \
+  --restart unless-stopped \
+  ghcr.io/linuxserver/nginx
+```
