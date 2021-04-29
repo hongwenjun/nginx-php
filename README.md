@@ -18,6 +18,28 @@ docker exec -it  nginx-php bash
 ```
 
 
+###  https://hub.docker.com/ 登陆、建立公共容器 ，先构造容器，再推送到远程
+```
+docker login
+Username:  hongwenjun    Password: xxxxx
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+
+vim Dockerfile
+
+docker build -t hongwenjun/nginx-php .
+
+docker push hongwenjun/nginx-php
+
+```
+
+### 启动 nginx-php-fpm7.3 容器
+```
+docker run -d -p 80:80 --name  nginx-php \
+    --cpus 0.5   --restart=always     \
+    -v /var/www/html:/var/www/html     \
+    hongwenjun/nginx-php
+```
+
 -----
 
 ##  Dockerfile 文件  使用 supervisor 启动 php-fpm  和 nginx 服务
