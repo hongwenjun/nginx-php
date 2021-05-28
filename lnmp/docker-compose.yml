@@ -1,0 +1,31 @@
+version: '3.1'
+services:
+    wordpress:
+        image: hongwenjun/nginx-php
+        container_name: wordpress
+        restart: always
+        volumes:
+            - /data/www/wordpress:/var/www/html
+        ports:
+            - 80:80
+        networks:
+            - frontend
+
+    mysql:
+        image: mysql
+        restart: always
+        volumes:
+            - /data/mysql:/var/lib/mysql
+        ports:
+            - 3306:3306
+        environment:
+            TZ: 'Asia/Shanghai'
+            MYSQL_DATABASE: wordpress
+            MYSQL_ROOT_PASSWORD: WordPress@2021
+        command: ['mysqld', '--character-set-server=utf8']
+        networks:
+            - backend
+
+networks:
+    frontend:
+    backend:
