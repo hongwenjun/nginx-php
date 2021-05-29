@@ -1,8 +1,8 @@
 ![](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nginx-banner.png)
-## 基于 debian:unstable-slim 配置 Docker 容器  nginx-php-fpm7.4 镜像
+## 基于 debian:stable-slim 配置 Docker 容器  nginx-php-fpm7.3 镜像
 
 ```
-# 下载 nginx-php7.4-fpm 项目源码
+# 下载 nginx-php7.3-fpm 项目源码
 git clone https://github.com/hongwenjun/nginx-php.git
 
 cd nginx-php
@@ -10,7 +10,7 @@ cd nginx-php
 # Docker 编译 Dockerfile
 docker build -t nginx-php .
 
-# 测试启动 nginx-php7.4-fpm 容器
+# 测试启动 nginx-php7.3-fpm 容器
 docker run -d -p 8888:80 --name  nginx-php  nginx-php
 
 # 进入容器
@@ -33,7 +33,7 @@ docker push hongwenjun/nginx-php
 
 ```
 
-### 启动 nginx-php-fpm7.4 容器
+### 启动 nginx-php-fpm7.3 容器
 
 ```
 docker run -d -p 80:80 -p 443:443  \
@@ -48,10 +48,10 @@ docker run -d -p 80:80 -p 443:443  \
 ```
 FROM debian:unstable-slim
 
-#  安装 nginx supervisor php7.4-fpm 省略 ......
+#  安装 nginx supervisor php7.3-fpm 省略 ......
 
 #  映射目录和端口和三个配置文件
-VOLUME [/var/www/html  /etc/nginx/sites-enabled ]
+VOLUME [/var/www/html  /etc/nginx/conf.d  /etc/nginx/cert]
 EXPOSE 80/tcp  443/tcp
 
 # COPY ./default             /etc/nginx/sites-enabled/default
@@ -86,7 +86,7 @@ server {
         location ~ .*\.php(\/.*)*$ {
                 include snippets/fastcgi-php.conf;
         #       # With php-fpm (or other unix sockets):
-                fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+                fastcgi_pass unix:/run/php/php7.3-fpm.sock;
         }
 
 }
@@ -96,7 +96,7 @@ server {
 
 ### docker-compose (recommended)
 
-```  
+```
 ---
 version: "2.1"
 services:
