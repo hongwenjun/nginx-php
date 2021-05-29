@@ -2,19 +2,20 @@
 
 # Usage:  curl -L http://git.io/lnmp.sh | bash
 
-# ½¨Á¢ÍøÕ¾ºÍÊı¾İ¿âÄ¿Â¼ºÍÏÂÔØwordpress³ÌĞòÉèÖÃÄ¿Â¼È¨ÏŞ
+# å»ºç«‹ç½‘ç«™å’Œæ•°æ®åº“ç›®å½•å’Œä¸‹è½½wordpressç¨‹åºè®¾ç½®ç›®å½•æƒé™
 mkdir -p  /data/www/   /data/mysql
 cd  /data/www
 curl https://cn.wordpress.org/latest-zh_CN.tar.gz | tar -zx
 chown -R www-data:www-data  /data/www/wordpress
 
-# °²×° docker-compose ²¿Êğ¹¤¾ß£¬²¿Êğlnmp
+# å®‰è£… docker-compose éƒ¨ç½²å·¥å…·ï¼Œéƒ¨ç½²lnmp
 wget  https://raw.githubusercontent.com/hongwenjun/nginx-php/main/lnmp/docker-compose.yml
 apt install -y docker-compose
 docker-compose up -d
 
-# ÅäÖÃ wordpress Ä¬ÈÏÃÜÂë
-echo ":: Êı¾İ¿âÃû:  wordpress"
-echo "::  ÓÃ»§Ãû :  root"
-echo "::  ÃÜ  Âë :  WordPress@2021"
-echo "::Êı¾İ¿âÖ÷»ú: 172.17.0.1"
+
+# é…ç½® wordpress é»˜è®¤å¯†ç 
+echo -e ":: ç™»é™†ç½‘å€:  http://www.yourname.net/wp-admin   é…ç½®wordpressç½‘ç«™ä¿¡æ¯"
+echo -e ":: æ•°æ®åº“å:  wordpress  \n::  ç”¨æˆ·å :  root  \n::  å¯†  ç  :  WordPress@2021  \n::  dbä¸»æœº :  db "
+echo
+echo -e ":: æ•°æ®åº“ç®¡ç†:  http://www.yourname.net:10086    æ¨èå…ˆä¿®æ”¹æ•°æ®åº“ root å¯†ç  "
