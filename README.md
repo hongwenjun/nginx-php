@@ -46,13 +46,13 @@ docker run -d -p 80:80 -p 443:443  \
 
 ##  [Dockerfile](https://raw.githubusercontent.com/hongwenjun/nginx-php/main/Dockerfile) 使用 supervisor 启动 php-fpm  和 nginx 服务
 ```
-FROM debian:unstable-slim
+FROM debian
 
 #  安装 nginx supervisor php7.3-fpm 省略 ......
 
 #  映射目录和端口和三个配置文件
-VOLUME [/var/www/html  /etc/nginx/conf.d  /etc/nginx/cert]
 EXPOSE 80/tcp  443/tcp
+# VOLUME [ /var/www/html  /etc/nginx/conf.d  /etc/nginx/cert ]
 
 # COPY ./default             /etc/nginx/sites-enabled/default
 # COPY ./supervisord.conf    /etc/supervisord.conf

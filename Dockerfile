@@ -16,8 +16,8 @@ RUN  apt update -y && \
      apt remove -y wget && \
      rm -rf /var/lib/apt/lists/*   /var/cache/apt
 
-VOLUME [/var/www/html  /etc/nginx/conf.d  /etc/nginx/cert]
 EXPOSE 80/tcp  443/tcp
+# VOLUME [ /var/www/html  /etc/nginx/conf.d  /etc/nginx/cert ]
 
 # COPY ./default             /etc/nginx/sites-enabled/default
 # COPY ./supervisord.conf    /etc/supervisord.conf
