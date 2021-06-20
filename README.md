@@ -33,6 +33,17 @@ docker push hongwenjun/nginx-php
 
 ```
 
+### 使用 buildx 构建多平台 Docker 镜像
+- 参考文章  https://blog.csdn.net/alex_yangchuansheng/article/details/103343697/
+```
+docker login
+
+# 三个平台同时编译打包
+docker buildx build -t hongwenjun/nginx-php \
+--platform=linux/arm,linux/arm64,linux/amd64 . --push
+
+```
+
 ### 启动 nginx-php-fpm7.3 容器
 
 ```
