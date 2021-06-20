@@ -15,5 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker buildx . --file Dockerfile --tag hongwenjun/nginx-php:$(date +%s) \
-              --platform=linux/arm,linux/arm64,linux/amd64  --push
+      run: docker buildx build . --file Dockerfile --push \
+            --tag hongwenjun/nginx-php:$(date +%s) \
+            --platform=linux/arm,linux/arm64,linux/amd64
