@@ -1,4 +1,15 @@
 ![](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nginx-banner.png)
+## linux/arm,linux/arm64,linux/amd64 多平台支持，甲骨文ARM、华为ARM、香橙派ARM 测试可以使用
+### 启动 nginx-php-fpm7.3 容器
+
+```
+docker run -d -p 80:80 -p 443:443  \
+    --cpus 0.8   --restart=always   \
+    -v /var/www/html:/var/www/html   \
+    --name  nginx-php      \
+    hongwenjun/nginx-php
+```
+
 ## 基于 debian:stable-slim 配置 Docker 容器  nginx-php-fpm7.3 镜像
 
 ```
@@ -44,15 +55,6 @@ docker buildx build -t hongwenjun/nginx-php \
 
 ```
 
-### 启动 nginx-php-fpm7.3 容器
-
-```
-docker run -d -p 80:80 -p 443:443  \
-    --cpus 0.8   --restart=always   \
-    -v /var/www/html:/var/www/html   \
-    --name  nginx-php      \
-    hongwenjun/nginx-php
-```
 -----
 
 ##  [Dockerfile](https://raw.githubusercontent.com/hongwenjun/nginx-php/main/Dockerfile) 使用 supervisor 启动 php-fpm  和 nginx 服务
