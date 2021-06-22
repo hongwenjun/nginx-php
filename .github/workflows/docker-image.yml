@@ -1,10 +1,12 @@
 name: Docker Image CI
 
+#  commit push 后 自动编译打包 关闭
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+
+#  push:
+#    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
 
 jobs:
 
@@ -15,4 +17,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag hongwenjun/nginx-php:$(date +%s)
+      run: docker build . --file Dockerfile --tag hongwenjun/nginx-php
