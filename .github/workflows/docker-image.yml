@@ -1,0 +1,20 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: DOCKER_TOKEN=507cf1da-146c-4223-927a-1d26eec28e39 &&  \
+          echo ${{ secrets.GITHUB_TOKEN }}  | docker login https://docker.pkg.github.com -u hongwenjun --password-stdin  && \
+          echo  "测试 docker login "  && docker buildx ls
