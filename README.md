@@ -105,6 +105,19 @@ server {
 }
 ```
 
+##  FROM 多阶段镜像构建
+```
+FROM  hongwenjun/nginx-php  AS builder
+RUN rm .dockerignore -rf
+
+FROM scratch
+COPY --from=builder .  .
+
+CMD ["/start.sh"]
+
+```
+
+
 ##  推荐 [linuxserver/nginx](https://hub.docker.com/r/linuxserver/nginx) 也支持php和更多插件
 
 ### docker-compose (recommended)
