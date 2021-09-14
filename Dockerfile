@@ -1,8 +1,8 @@
 FROM debian:stable-slim
 RUN  apt update -y && \
      apt install -y --no-install-recommends --no-install-suggests nginx supervisor wget  \
-     php7.3 php7.3-fpm php7.3-sqlite3 php7.3-xml php7.3-zip php7.3-pgsql php7.3-mbstring  \
-     php7.3-bcmath php7.3-json php7.3-mysql php7.3-gd php7.3-cli php7.3-curl php7.3-cgi && \
+     php7.4 php7.4-fpm php7.4-sqlite3 php7.4-xml php7.4-zip php7.4-pgsql php7.4-mbstring  \
+     php7.4-bcmath php7.4-json php7.4-mysql php7.4-gd php7.4-cli php7.4-curl php7.4-cgi && \
      mkdir -p  /var/run/php  /run/php  /etc/nginx/cert && \
      wget https://raw.githubusercontent.com/hongwenjun/nginx-php/main/start.sh         --no-check-certificate && \
      wget https://raw.githubusercontent.com/hongwenjun/nginx-php/main/default          --no-check-certificate  && \

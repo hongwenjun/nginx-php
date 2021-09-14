@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nginx-banner.png)
 ## linux/arm,linux/arm64,linux/amd64 多平台支持，甲骨文ARM、华为ARM、香橙派ARM 测试可以使用
-### 启动 nginx-php-fpm7.3 容器
+### 启动 nginx-php-fpm7.4 容器
 
 ```
 docker run -d -p 80:80 -p 443:443  \
@@ -10,25 +10,19 @@ docker run -d -p 80:80 -p 443:443  \
     hongwenjun/nginx-php
 ```
 
-## 基于 debian:stable-slim 配置 Docker 容器  nginx-php-fpm7.3 镜像
+## 基于 debian:stable-slim 配置 Docker 容器  nginx-php-fpm7.4 镜像
 
 ```
-# 下载 nginx-php7.3-fpm 项目源码
-git clone https://github.com/hongwenjun/nginx-php.git
-
-cd nginx-php
-
 # Docker 编译 Dockerfile
-docker build -t nginx-php .
+docker build -t nginx-php https://git.io/nginx-php
 
-# 测试启动 nginx-php7.3-fpm 容器
+# 测试启动 nginx-php7.4-fpm 容器
 docker run -d -p 8888:80 --name  nginx-php  nginx-php
 
 # 进入容器
 docker exec -it  nginx-php bash
 
 ```
-
 
 ###  https://hub.docker.com/ 登陆、建立公共容器 ，先构造容器，再推送到远程
 ```
@@ -57,11 +51,11 @@ docker buildx build -t hongwenjun/nginx-php \
 
 -----
 
-##  [Dockerfile](https://raw.githubusercontent.com/hongwenjun/nginx-php/main/Dockerfile) 使用 supervisor 启动 php-fpm  和 nginx 服务
+##  [Dockerfile](https://git.io/nginx-php) 使用 supervisor 启动 php-fpm  和 nginx 服务
 ```
 FROM debian
 
-#  安装 nginx supervisor php7.3-fpm 省略 ......
+#  安装 nginx supervisor php7.4-fpm 省略 ......
 
 #  映射目录和端口和三个配置文件
 EXPOSE 80/tcp  443/tcp
@@ -99,7 +93,7 @@ server {
         location ~ .*\.php(\/.*)*$ {
                 include snippets/fastcgi-php.conf;
         #       # With php-fpm (or other unix sockets):
-                fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+                fastcgi_pass unix:/run/php/php7.4-fpm.sock;
         }
 
 }
