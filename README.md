@@ -1,5 +1,9 @@
 ![](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nginx-banner.png)
 ## linux/arm,linux/arm64,linux/amd64 多平台支持，甲骨文ARM、华为ARM、香橙派ARM 测试可以使用
+```
+# tag 20210703  linux/arm,linux/arm64,linux/amd64 多平台支持
+docker pull hongwenjun/nginx-php:20210703
+```
 ### 启动 nginx-php-fpm7.4 容器
 
 ```
