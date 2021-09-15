@@ -1,0 +1,33 @@
+########################################################
+###          一键 WordPress 博客安装脚本             ###
+###     https://github.com/hongwenjun/nginx-php      ###
+########################################################
+
+# 建立网站和数据库目录和下载wordpress程序设置目录权限
+mkdir -p  /data/www/   /data/mysql
+cd  /data/www
+curl https://cn.wordpress.org/latest-zh_CN.tar.gz | tar -zx
+chown -R www-data:www-data  /data/www/wordpress
+
+# 安装 docker-compose 部署工具，部署lnmp
+apt install -y docker-compose
+wget  docker-compose.yml
+docker-compose up -d
+
+# 设置 wordpress 网页程序
+- 数据库名:  wordpress
+- 用户名:    root
+- 密  码:    WordPress@2021
+- 数据库主机: db
+
+### 以上为脚本原理，复制粘贴下面命令，自动帮你部署  ####
+
+# 一键 WordPress 博客安装脚本
+
+curl -L  git.io/lnmp.sh | bash
+
+# 国内用户使用镜像
+
+curl -L  262235.xyz/lnmp.sh | bash
+
+

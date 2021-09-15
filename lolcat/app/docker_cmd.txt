@@ -1,0 +1,31 @@
+# Docker 一键安装命令
+curl -fsSLo- get.docker.com | /bin/sh
+
+# 国内使用阿里云镜像
+wget get.docker.com -O get.docker.sh
+bash  get.docker.sh  --mirror Aliyun
+
+# 运行 hello-world 检查Docker引擎是否安装
+docker run hello-world
+
+# 运行一个 Ubuntu 容器
+docker run -it ubuntu bash
+
+# 显示所有的容器
+docker ps -a
+
+# 显示本机镜像
+docker images
+
+# 查看镜像的历史
+docker history hello-world
+
+# 查看Ubuntu镜像的历史
+docker history ubuntu
+
+# 删除所有容器
+docker rm  -f  $(docker ps -qa)
+
+# 删除所有镜像
+docker rmi -f  $(docker images -qa)
+
