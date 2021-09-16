@@ -2,10 +2,10 @@
 
 ### Build
 ```
+wget -O lolcat.tgz  https://github.com/hongwenjun/nginx-php/raw/main/lolcat/lolcat.tgz
 tar xf lolcat.tgz
 docker build -t lolcat  .
 docker run --rm -it  lolcat Dockerfile
-
 ```
 
 ### Usage
