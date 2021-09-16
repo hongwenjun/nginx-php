@@ -1,11 +1,10 @@
-![Dockerfile](https://github.com/hongwenjun/nginx-php/blob/main/lolcat/lolcat.png)
-
+![](https://github.com/hongwenjun/nginx-php/blob/main/lolcat/lolcat.gif)
 ### Build
 ```
-wget -O lolcat.tgz  https://github.com/hongwenjun/nginx-php/raw/main/lolcat/lolcat.tgz
 tar xf lolcat.tgz
 docker build -t lolcat  .
 docker run --rm -it  lolcat Dockerfile
+
 ```
 
 ### Usage
@@ -13,6 +12,8 @@ docker run --rm -it  lolcat Dockerfile
 docker run --rm -it -v $(pwd):/app/ \
     hongwenjun/lolcat  README.md
 ```
+
+![Dockerfile](https://github.com/hongwenjun/nginx-php/blob/main/lolcat/lolcat.png)
 
 ### `Dockerfile`
 ```
@@ -23,9 +24,12 @@ docker run --rm -it -v $(pwd):/app/ \
 #   |_____\___/|_|\___\__,_|\__|
 #
 
-FROM jamesnetherton/lolcat  AS builder
-RUN  apk del ca-certificates ruby-dev musl-dev gcc make; rm -rf  /usr/share/terminfo \
-         /usr/share/ca-certificates /etc/ssl /etc/terminfo /lib/libssl.so.1.1
+FROM alpine:latest  AS builder
+RUN  apk add ruby; gem install lolcat;   \
+     apk del ca-certificates ruby-dev;    \
+     rm -rf /usr/share/terminfo /usr/share/ca-certificates /var/cache /etc/ssl \
+        /etc/terminfo /lib/libssl.so.1.1 /lib/libcrypto.so.1.1   \
+        /usr/lib/ruby/gems/2.7.0/cache /usr/lib/ruby/2.7.0/x86_64-linux-musl/enc
              
 FROM scratch
 COPY --from=builder  .  .
@@ -40,3 +44,4 @@ ENTRYPOINT ["lolcat"]
 # docker run --rm -it -v $(pwd):/app/ lolcat Dockerfile
 
 ```
+
