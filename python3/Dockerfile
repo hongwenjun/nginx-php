@@ -9,15 +9,17 @@ RUN  apt update -y \
   && pip3 install --upgrade  pip  requests  \
   && rm -rf /var/lib/apt/lists/*
 
-RUN  mkdir /app  \ 
-  && wget https://git.io/me.py  \
-  && wget https://raw.githubusercontent.com/hongwenjun/srgb/master/python/html2md.py  \
+RUN  mkdir -p /app && cd /app \ 
   && pip3 install html2text  pillow  \
   && pip3 install dnspython bson feedparser qbittorrent-api pymongo func_timeout honeybadger  \
   && pip3 install scrapy  \
-  && pip3 install beautifulsoup4  html5lib  ipip-ipdb \
+  && pip3 install beautifulsoup4  html5lib Flask ipip-ipdb \
+  && wget https://git.io/me.py  \
+  && wget https://raw.githubusercontent.com/hongwenjun/srgb/master/python/html2md.py  \
+  && wget https://raw.githubusercontent.com/hongwenjun/pillow_font/main/bitfont.py  \
   && rm -rf /usr/share/python-wheels/*
-
+  
+WORKDIR /app
 EXPOSE 8000/tcp
 CMD ["python3"]
 
