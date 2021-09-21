@@ -6,31 +6,22 @@
 ```
 docker run -d  --restart=always   \
     -v /app:/app  --name python3 \
-    hongwenjun/python3  \
-    python3 -m http.server 8000
-
+    hongwenjun/python3  sh
 ```
 
 ##  Run a command in a running container
 ```
 docker exec -it  python3   bash
-
 tmux -u
-
 tmux -u a
 ```
 
 ## os sys html2text library
-
 ```
 python3  -i me.py
-
 python3  html2md.py  https://www.262235.xyz/index.php/archives/242/
-
-
 ```
 ## Scrapy Shell 
-
 ```
 scrapy shell 'https://262235.xyz'
 
@@ -90,15 +81,12 @@ CMD ["python3"]
 
 #   docker run -d -p 8000:8000 --restart=always   \
 #       -v /app:/app  --name python3 \
-#       hongwenjun/python3  \
-#       python3 -m http.server 8000
+#       hongwenjun/python3 sh
 #
 #   docker exec -it python3   bash
 #
 #   tmux -u
-#
 #   docker exec -it  python3   bash
-#
 #   tmux -u a
 
 ################################################################################
