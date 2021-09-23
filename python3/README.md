@@ -4,7 +4,7 @@
 
 ##  Usage ,  Run Container in Background
 ```
-docker run -d  --restart=always   \
+docker run -itd  --restart=always   \
     -v /app:/app  --name python3 \
     hongwenjun/python3  sh
 ```
@@ -79,7 +79,7 @@ CMD ["python3"]
 
 ################################################################################
 
-#   docker run -d -p 8000:8000 --restart=always   \
+#   docker run -itd -p 8000:8000 --restart=always   \
 #       -v /app:/app  --name python3 \
 #       hongwenjun/python3 sh
 #
