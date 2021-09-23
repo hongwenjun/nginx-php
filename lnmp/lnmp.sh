@@ -37,16 +37,17 @@ if [[ ! -z "${passwd}" ]]; then
 fi
 
 # 安装 docker-compose 部署工具
+if [ ! -e '/usr/local/bin/docker-compose' ]; then
+    wget https://262235.xyz/docker-compose  -O /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+fi
 if [ -e '/etc/redhat-release' ]; then
-    if [ ! -e '/usr/local/bin/docker-compose' ]; then
-        wget https://262235.xyz/docker-compose  -O /usr/local/bin/docker-compose
-        chmod +x /usr/local/bin/docker-compose
-    fi
     groupadd www-data
     useradd -g www-data www-data
     chown -R www-data:www-data  /data/www/wordpress
 else
-    apt install -y docker-compose
+    # apt install -y docker-compose  # Debian 11 安装docker-compose目前会停止Docker
+    chown -R www-data:www-data  /data/www/wordpress
 fi
 
 clear
