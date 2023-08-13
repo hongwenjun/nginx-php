@@ -4,7 +4,7 @@
 # tag 20210703  linux/arm,linux/arm64,linux/amd64 多平台支持
 docker pull hongwenjun/nginx-php:20210703
 ```
-### 启动 nginx-php-fpm7.4 容器
+### 启动 nginx-php-fpm8.2 容器
 
 ```
 docker run -d -p 80:80 -p 443:443  \
@@ -14,13 +14,13 @@ docker run -d -p 80:80 -p 443:443  \
     hongwenjun/nginx-php
 ```
 
-## 基于 debian:stable-slim 配置 Docker 容器  nginx-php-fpm7.4 镜像
+## 基于 debian:stable-slim 配置 Docker 容器  nginx-php-fpm8.2 镜像
 
 ```
 # Docker 编译 Dockerfile
 docker build -t nginx-php https://git.io/nginx-php
 
-# 测试启动 nginx-php7.4-fpm 容器
+# 测试启动 nginx-php8.2-fpm 容器
 docker run -d -p 8888:80 --name  nginx-php  nginx-php
 
 # 进入容器

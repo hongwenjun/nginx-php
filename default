@@ -39,6 +39,7 @@ server {
         # include snippets/snakeoil.conf;
 
         root /var/www/html;
+        client_max_body_size 256m;
 
         # Add index.php to the list if you are using PHP
         index index.html index.php index.nginx-debian.html;
@@ -57,7 +58,7 @@ server {
                 include snippets/fastcgi-php.conf;
         #
         #       # With php-fpm (or other unix sockets):
-                fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+                fastcgi_pass unix:/run/php/php8.2-fpm.sock;
         #       # With php-cgi (or other tcp sockets):
         #       fastcgi_pass 127.0.0.1:9000;
         }
