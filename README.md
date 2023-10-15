@@ -1,4 +1,8 @@
-![](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nginx-banner.png)
+## 项目描述 [渠成开源社区](https://www.qucheng.cc/project/nginx-php.html)
+Nginx-PHP Docker容器是一个集成了Nginx和PHP的容器化解决方案，旨在为开发人员和运维团队提供一个简便的方式来部署和管理Web应用程序。
+
+![](./nginx-php.png)
+
 ## linux/arm,linux/arm64,linux/amd64 多平台支持，甲骨文ARM、华为ARM、香橙派ARM 测试可以使用
 ```
 # tag 20210703  linux/arm,linux/arm64,linux/amd64 多平台支持

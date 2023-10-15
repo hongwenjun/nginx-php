@@ -7,7 +7,7 @@ RUN  apt update -y \
   && apt clean  && apt autoremove  \
   && rm -rf /var/lib/apt/lists/*  /tmp/*  get-pip.py 
 
-RUN  mkdir -p /app && cd /app \ 
+RUN  mkdir -p /app && cd /app \
   && pip3 install requests html2text mysql-connector \
   && pip3 install beautifulsoup4  html5lib Flask ipip-ipdb \
   && wget https://git.io/me.py  --no-check-certificate \
